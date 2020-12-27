@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 namespace Artemis
 {
@@ -64,6 +65,7 @@ namespace Artemis
 					if (Debugging)
 						Debug.Log("We are currently performing a UI Load Shoot type at " + gameObject);
 
+					//SendHapticFeedback();
 
 					SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
 				}
@@ -86,6 +88,23 @@ namespace Artemis
 
 			if (Debugging)
 				Debug.Log("The value of HandleShot in " + gameObject + " was set to " + HandleShot);
+		}
+
+		public void SendHapticFeedback()
+		{
+
+			SteamVR_Behaviour_Pose[] sp;
+			SteamVR_Behaviour_Skeleton[] ss;
+			ss = FindObjectsOfType<SteamVR_Behaviour_Skeleton>();
+			foreach(SteamVR_Behaviour_Skeleton s in ss)
+			{
+					s.hapticSignal.Execute(0f, 0.1f, 160, 0.5f, s.inputSource);
+			}
+			sp = FindObjectsOfType<SteamVR_Behaviour_Pose>();
+			foreach (SteamVR_Behaviour_Pose s in sp)
+			{
+				s.hapticSignal.Execute(0f, 0.1f, 160, 0.5f, s.inputSource);
+			}
 		}
 	}
 }
