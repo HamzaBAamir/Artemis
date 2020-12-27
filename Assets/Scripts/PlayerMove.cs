@@ -3,7 +3,13 @@
 public class PlayerMove : MonoBehaviour
 {
 
-	public Transform VRRig;
+	public Rigidbody VRRig;
+	public Transform RightController;
+	public Transform LeftController;
+
+	private bool ApplyForceR;
+	private bool ApplyForceL;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +19,20 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		if (ApplyForceR)
+		{
+			VRRig.AddForceAtPosition(Vector3.Scale(RightController.forward, new Vector3(0.1f, 0.1f, 0.1f)), RightController.position, ForceMode.VelocityChange);
+			Debug.Log(Vector3.Scale(RightController.forward, new Vector3(0.1f, 0.1f, 0.1f)));
+			ApplyForceR = false;
+		}
     }
 
-	public void MovePlayer()
+	public void MovePlayerR()
 	{
-
+		ApplyForceR = true;
+	}
+	public void MovePlayerL()
+	{
+		ApplyForceR = true;
 	}
 }
