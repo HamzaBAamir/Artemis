@@ -31,6 +31,7 @@ public class PlayerMove : MonoBehaviour
 			Debug.Log(Vector3.Scale(LeftController.forward, new Vector3(0.1f, 0.1f, 0.1f)));
 			ApplyForceL = false;
 		}
+		Artemis.DataManager.Velocity = Mathf.RoundToInt( VRRig.velocity.x + VRRig.velocity.y + VRRig.velocity.z );
 	}
 
 	public void MovePlayerR()

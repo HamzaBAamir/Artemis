@@ -8,6 +8,7 @@ public class UpdateScore : MonoBehaviour
 {
 	public bool HighScore;
 	public bool CurrentScore;
+	public bool Velocity = false;
 
 	public TextMeshProUGUI text;
 	private DataManager dm;
@@ -25,6 +26,10 @@ public class UpdateScore : MonoBehaviour
 		{
 			text.text = "Current Score: " + dm.GetScore(2);
 			Debug.Log(DataManager.CurrentScore);
+		}
+		if (Velocity)
+		{
+			text.text = "Velocity: " + DataManager.Velocity + " m/s";
 		}
 	}
 }

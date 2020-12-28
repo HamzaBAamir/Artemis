@@ -31,6 +31,8 @@ public class PlayerCreateEMP : MonoBehaviour
 			Debug.Log(EMPInstance);
 			if (EMPInstance.GetComponent<FixedJoint>() != null)
 				EMPInstance.GetComponent<FixedJoint>().connectedBody = null;
+			if (EMPInstance.GetComponent<Rigidbody>() != null)
+				EMPInstance.GetComponent<Rigidbody>().AddForceAtPosition(transform.forward, transform.position, ForceMode.Impulse);
 			HandleRelease = false;
 			HandleSpawn = false;
 			Spawned = false;

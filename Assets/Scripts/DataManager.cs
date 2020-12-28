@@ -20,6 +20,9 @@ namespace Artemis{
 		public static int CurrentScore;
 
 		[HideInInspector]
+		public static int Velocity;
+
+		[HideInInspector]
 		public static int CurrentOxygen;
 
 		[HideInInspector]
@@ -153,9 +156,13 @@ namespace Artemis{
 			{
 				return CurrentScore;
 			}
+			if (type == 0)
+			{
+				return Velocity;
+			}
 			else
 			{
-				return HighScore;
+				return -1;
 			}
 		}
 	}
