@@ -25,7 +25,13 @@ public class PlayerMove : MonoBehaviour
 			Debug.Log(Vector3.Scale(RightController.forward, new Vector3(0.1f, 0.1f, 0.1f)));
 			ApplyForceR = false;
 		}
-    }
+		if (ApplyForceL)
+		{
+			VRRig.AddForceAtPosition(Vector3.Scale(LeftController.forward, new Vector3(0.1f, 0.1f, 0.1f)), LeftController.position, ForceMode.VelocityChange);
+			Debug.Log(Vector3.Scale(LeftController.forward, new Vector3(0.1f, 0.1f, 0.1f)));
+			ApplyForceL = false;
+		}
+	}
 
 	public void MovePlayerR()
 	{

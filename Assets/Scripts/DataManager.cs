@@ -33,7 +33,15 @@ namespace Artemis{
 			if (Debugging)
 				Debug.Log("Start was called in DataManager.cs");
 		}
+		public void AddScore(int Score)
+		{
+			CurrentScore += Score;
+		}
 
+		void OnApplicationQuit()
+		{
+			SubmitScore();
+		}
 
 		/// <summary>
 		/// This method makes DataManager set all variables to their default values
@@ -133,6 +141,21 @@ namespace Artemis{
 			if (Score > HighScore)
 			{
 				PlayerPrefs.SetInt("HighScore", Score);
+			}
+		}
+		public float GetScore(int type)
+		{
+			if (type == 1)
+			{
+				return HighScore;
+			}
+			if (type == 2)
+			{
+				return CurrentScore;
+			}
+			else
+			{
+				return HighScore;
 			}
 		}
 	}
